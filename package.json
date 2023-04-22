@@ -8,6 +8,10 @@
   },
   "author": "maphongba0008",
   "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/maphongba008/rn-toast"
+  },
   "devDependencies": {
     "react": "^17",
     "react-native": "^0.60",
