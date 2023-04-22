@@ -1,0 +1,16 @@
+{
+  "name": "rn-toast",
+  "version": "1.0.0",
+  "description": "Simple toast library for react native",
+  "main": "index.tsx",
+  "scripts": {
+    "test": "test"
+  },
+  "author": "maphongba0008",
+  "license": "ISC",
+  "devDependencies": {
+    "react": "^17",
+    "react-native": "^0.60",
+    "react-native-safe-area-context": "^4"
+  }
+}
