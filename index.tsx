@@ -20,6 +20,12 @@ type Toast = {
   id: string;
 };
 
+export type ToastConfig = {
+  successStyle?: ViewStyle;
+  errorStyle?: ViewStyle;
+  textStyle?: ViewStyle;
+};
+
 let i = 0;
 
 let _subscriber: ((type: ToastType, message: string) => void) | undefined =
@@ -28,9 +34,11 @@ let _subscriber: ((type: ToastType, message: string) => void) | undefined =
 const ToastItem = ({
   onClose,
   toast,
+  config,
 }: {
   toast: Toast;
   onClose?: (id: string) => void;
+  config?: ToastConfig;
 }) => {
   console.log("render toast", toast.id);
   const animation = React.useRef(new Animated.Value(0)).current;
@@ -80,7 +88,10 @@ const ToastItem = ({
     //   },
     // ],
   };
-  const toastStyle = toast.type === "success" ? styles.success : styles.error;
+  const toastStyle =
+    toast.type === "success"
+      ? [styles.success, config?.successStyle]
+      : [styles.error, config?.errorStyle];
   const { width } = useWindowDimensions();
   return (
     <Animated.View
@@ -91,7 +102,7 @@ const ToastItem = ({
         animatedStyle,
       ]}
     >
-      <Text style={styles.message}>{toast.message}</Text>
+      <Text style={[styles.message, config?.textStyle]}>{toast.message}</Text>
     </Animated.View>
   );
 };
@@ -116,7 +127,7 @@ const styles = StyleSheet.create({
   },
 });
 
-export const Provider = () => {
+export const Provider = ({ config }: { config?: ToastConfig }) => {
   const { bottom } = useSafeAreaInsets();
 
   const [data, setData] = React.useState<Toast[]>([]);
@@ -144,16 +155,18 @@ export const Provider = () => {
   return (
     <View pointerEvents="none" style={style}>
       {data.map((d) => {
-        return <ToastItem key={d.id} onClose={onRemove} toast={d} />;
+        return (
+          <ToastItem config={config} key={d.id} onClose={onRemove} toast={d} />
+        );
       })}
     </View>
   );
 };
 
 export default {
-  Provider: () => (
+  Provider: ({ config }: { config?: ToastConfig }) => (
     <SafeAreaProvider>
-      <Provider />
+      <Provider {...{ config }} />
     </SafeAreaProvider>
   ),
   showSuccess: (message: string) => {
