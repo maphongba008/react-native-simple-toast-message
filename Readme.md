@@ -5,10 +5,10 @@ This is a React Native component that displays a toast message on the screen. It
 ## Demo
 
 Simple success toast
-![Success toast](./images/success.png)
+![Success toast|500](./images/success.png)
 
 In case multiple toasts are shown, they are stacked on top of each other
-![Multiple toasts](./images/multiple.png)
+![Multiple toasts|500](./images/multiple.png)
 
 ## Installation
 
