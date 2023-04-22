@@ -1,6 +1,6 @@
 {
-  "name": "rn-toast",
-  "version": "1.0.0",
+  "name": "react-native-simple-toast-message",
+  "version": "1.0.1",
   "description": "Simple toast library for react native",
   "main": "index.tsx",
   "scripts": {
@@ -16,5 +16,8 @@
     "react": "^17",
     "react-native": "^0.60",
     "react-native-safe-area-context": "^4"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
