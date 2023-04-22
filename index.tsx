@@ -24,6 +24,7 @@ export type ToastConfig = {
   successStyle?: ViewStyle;
   errorStyle?: ViewStyle;
   textStyle?: ViewStyle;
+  duration?: number;
 };
 
 let i = 0;
@@ -52,7 +53,7 @@ const ToastItem = ({
     const a = Animated.timing(animation, {
       toValue: value,
       useNativeDriver: true,
-      duration: 250,
+      duration: config?.duration || 300,
     });
     a.start(() => {
       cb?.();

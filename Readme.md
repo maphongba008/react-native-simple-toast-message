@@ -2,6 +2,14 @@
 
 This is a React Native component that displays a toast message on the screen. It provides two types of toasts: success and error, which are customizable through the provided ToastConfig object.
 
+## Demo
+
+Simple success toast
+![Success toast](./images/success.png)
+
+In case multiple toasts are shown, they are stacked on top of each other
+![Multiple toasts](./images/multiple.png)
+
 ## Installation
 
 To use this component, install it as an npm package:
